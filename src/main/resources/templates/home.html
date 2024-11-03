@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Content Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Merriweather:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Fonts and Colors */
+        :root {
+            --font-ds: 'Dancing Script', cursive;
+            --font-mt: 'Montserrat', sans-serif;
+            --font-mw: 'Merriweather', serif;
+            --blue-gradient: linear-gradient(135deg, #667eea, #764ba2);
+            --pink: #ff4e5c;
+            --light-bg: #a2e8a2;
+            --text-light: #a5e4a5;
+            --text-dark: #333333;
+        }
+
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: var(--font-mw);
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            background: var(--blue-gradient);
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar .button {
+            font-family: var(--font-mt);
+            padding: 8px 15px;
+            margin: 0 8px;
+            color: #fff;
+            background-color: var(--pink);
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .button:hover {
+            background-color: #e03d4e;
+        }
+
+        /* Full-Screen Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            background: var(--blue-gradient);
+            color: var(--text-light);
+            position: relative;
+        }
+
+        /* Hero Section with Background Image */
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 10px;
+            width: 100%;
+            background: url('/images/img.png') center center / cover no-repeat;
+            position: relative;
+        }
+
+        /* Overlay for better text contrast */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+        }
+
+        .hero h1, .hero p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: var(--font-mt);
+            font-size: 2em;
+            margin-bottom: 6px;
+        }
+
+        .hero h1 span {
+            font-family: var(--font-ds);
+            font-size: 2.4em;
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1em;
+            margin-top: 8px;
+            max-width: 450px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: #667eea;
+            color: var(--text-light);
+            font-size: 0.8em;
+            width: 100%;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 5px 0;
+        }
+
+        .footer a {
+            color: var(--text-light);
+            opacity: 0.8;
+            text-decoration: none;
+            font-size: 0.8em;
+        }
+
+        .footer a:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar with Buttons -->
+<div class="navbar">
+    <button class="button" onclick="window.location.href='/profile'">User Profile</button>
+    <button class="button" onclick="window.location.href='/content'">Content Management</button>
+    <button class="button" onclick="window.location.href='/admin/users'">User Administration</button>
+    <button class="button" onclick="window.location.href='/login'">Login</button>
+    <button class="button" onclick="window.location.href='/register'">Register</button>
+</div>
+
+<div class="container">
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to <span>Our CMS</span></h1>
+        <p>Manage your content efficiently and securely with our user-friendly platform.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Content Management System</p>
+        <div class="footer-links">
+            <a href="#" th:href="@{/privacy}">Privacy Policy</a>
+            <a href="#" th:href="@{/terms}">Terms of Service</a>
+            <a href="#" th:href="@{/contact}">Contact Us</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Administration Menu</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>User Management</h2>
+    <table class="table">
+        <thead>
+        <tr>
+
+            <th>Username</th>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date of Birth</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.dob}"></td>
+            <td th:text="${user.phone}"></td>
+            <td>
+                <a th:href="@{/admin/users/{id}(id=${user.id})}" class="btn btn-warning">Edit</a>
+                <form th:action="@{/admin/users/{id}(id=${user.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+
+
+
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/admin/users/new}" class="btn btn-primary">Add New User</a>
+</div>
+</body>
+</html>
